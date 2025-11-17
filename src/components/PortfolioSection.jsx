@@ -65,8 +65,10 @@ const PortfolioSection = ({
     return () => clearTimeout(startTimer);
   }, [isVisible, titleText, title, delay]);
 
+  const isWritingSection = title === 'WRITING';
+
   return (
-    <div className="portfolio-section" ref={sectionRef}>
+    <div className={`portfolio-section ${isWritingSection ? 'writing-section' : ''}`} ref={sectionRef}>
       <div className="screenplay-content">
         <h3 className="section-title">
           {titleText}
@@ -74,13 +76,13 @@ const PortfolioSection = ({
         </h3>
 
         {showSubtitle && subtitle && (
-          <p className="section-subtitle">{subtitle}</p>
+          <p className="section-subtitle handwritten-note">{subtitle}</p>
         )}
 
         {showCategories && categories.length > 0 && (
           <div className="section-categories">
             {categories.map((category, index) => (
-              <span key={index} className="category-tag">
+              <span key={index} className="category-tag handwritten-bullet">
                 {category}
               </span>
             ))}

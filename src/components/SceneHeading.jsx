@@ -6,13 +6,25 @@ const SceneHeading = ({ onComplete }) => {
   const [showCursor, setShowCursor] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
 
-  // Get time of day
+  // Get time of day or exact timestamp
   const getTimeOfDay = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'MORNING';
-    if (hour < 17) return 'DAY';
-    if (hour < 21) return 'EVENING';
-    return 'NIGHT';
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const second = now.getSeconds();
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const displayHour = hour % 12 || 12;
+    const displayMinute = minute.toString().padStart(2, '0');
+    const displaySecond = second.toString().padStart(2, '0');
+    
+    // Option 1: Use exact timestamp (more cinematic)
+    return `${displayHour}:${displayMinute}:${displaySecond} ${ampm}`;
+    
+    // Option 2: Use time of day (uncomment to use instead)
+    // if (hour < 12) return 'MORNING';
+    // if (hour < 17) return 'DAY';
+    // if (hour < 21) return 'EVENING';
+    // return 'NIGHT';
   };
 
   const fullText = `INT. PORTFOLIO SITE – ${getTimeOfDay()}`;

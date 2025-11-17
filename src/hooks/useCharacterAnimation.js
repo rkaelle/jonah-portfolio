@@ -11,12 +11,14 @@ export const useCharacterAnimation = (startDelay = 0) => {
     'Dancer',
     'Musician',
     'Artist?',
+    '', // Deleted
     'Screenwriter',
     'Animator',
     'Graphic Designer',
     'VFX Artist',
     'Video Editor',
     'Rapper??',
+    '', // Deleted with "maybe not that one"
     'Creative'
   ];
 
@@ -38,6 +40,16 @@ export const useCharacterAnimation = (startDelay = 0) => {
 
     const targetTitle = titles[titleIndex];
 
+    // Handle empty string (deleted state)
+    if (targetTitle === '') {
+      // If we're at an empty string, just move to next immediately
+      const timer = setTimeout(() => {
+        setTitleIndex((prev) => prev + 1);
+        setIsTyping(true);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+
     if (isTyping) {
       // Type the current title
       if (currentTitle.length < targetTitle.length) {
@@ -53,12 +65,13 @@ export const useCharacterAnimation = (startDelay = 0) => {
         if (titleIndex === titles.length - 1) {
           const timer = setTimeout(() => {
             setIsComplete(true);
-          }, 500);
+          }, 800);
           return () => clearTimeout(timer);
         }
 
-        // Special pause for "Rapper??" to show hesitation
-        const pauseTime = targetTitle === 'Rapper??' ? 1200 : 600;
+        // Special pause for "Rapper??" to show hesitation, then delete
+        const pauseTime = targetTitle === 'Rapper??' ? 1500 : 
+                          targetTitle === 'Artist?' ? 1000 : 600;
 
         // Pause, then start deleting
         const timer = setTimeout(() => {

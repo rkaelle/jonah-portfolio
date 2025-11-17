@@ -20,6 +20,19 @@
   letter-spacing: 0.2em;
   margin-bottom: 3rem;
   color: white;
+  position: relative;
+}
+
+.contact-title::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 2px;
+  background: white;
+  opacity: 0.6;
 }
 
 .contact-details {
@@ -34,10 +47,13 @@
   font-size: 1.2rem;
   color: white;
   text-decoration: none;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border: 1px solid white;
   transition: all 0.3s ease;
   position: relative;
+  display: inline-block;
+  background: transparent;
+  cursor: pointer;
 }
 
 .contact-link:hover {

@@ -43,7 +43,7 @@ const ContactSection = ({ startDelay = 0 }) => {
               rel="noopener noreferrer"
               className="contact-link"
             >
-              LinkedIn
+              LinkedIn →
             </a>
             <a
               href="mailto:jonah.eisenman@gmail.com"

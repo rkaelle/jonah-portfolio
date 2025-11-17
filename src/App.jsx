@@ -12,7 +12,11 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const handleTitleComplete = () => {
-    setCurrentStep(1);
+    // Scroll to top smoothly after title page fades
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setCurrentStep(1);
+    }, 500);
   };
 
   const handleSceneHeadingComplete = () => {

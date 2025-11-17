@@ -28,6 +28,8 @@
   width: 100%;
   padding-left: 10%;
   padding-right: 10%;
+  position: relative;
+  z-index: 2;
 }
 
 /* Ensure smooth scrolling */

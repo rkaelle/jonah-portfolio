@@ -1,0 +1,63 @@
+.title-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.title-page.fade-out {
+  opacity: 0;
+}
+
+.title-content {
+  text-align: center;
+  font-family: 'Courier', 'Courier New', monospace;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.written-by {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.author {
+  font-size: 2rem;
+  font-weight: normal;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .written-by {
+    font-size: 1rem;
+  }
+
+  .author {
+    font-size: 1.5rem;
+  }
+}

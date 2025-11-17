@@ -1,0 +1,34 @@
+.character-intro {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.character-description {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.character-name {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.character-title {
+  font-style: italic;
+  display: inline-block;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .character-description {
+    font-size: 1rem;
+  }
+
+  .character-title {
+    min-width: 120px;
+  }
+}

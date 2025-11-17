@@ -1,0 +1,32 @@
+.scene-heading {
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.screenplay-content {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 10%;
+}
+
+.scene-heading-text {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .screenplay-content {
+    padding-left: 5%;
+  }
+
+  .scene-heading-text {
+    font-size: 1rem;
+  }
+}

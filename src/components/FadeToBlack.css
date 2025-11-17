@@ -1,0 +1,39 @@
+.fade-to-black-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 4rem 2rem;
+}
+
+.scene-direction {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
+
+.black-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease-in;
+  z-index: 5;
+}
+
+.black-overlay.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .scene-direction {
+    font-size: 1rem;
+  }
+}

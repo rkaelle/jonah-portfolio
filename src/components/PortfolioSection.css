@@ -1,0 +1,126 @@
+.portfolio-section {
+  min-height: 80vh;
+  padding: 6rem 2rem;
+}
+
+.section-title {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: #333;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.section-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.category-tag {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.category-tag:hover {
+  background: #000;
+  color: #fff;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.portfolio-item {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.item-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-thumbnail {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+  padding: 1rem;
+}
+
+.item-title {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}

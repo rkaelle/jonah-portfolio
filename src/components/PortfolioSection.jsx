@@ -1,0 +1,117 @@
+import { useState, useEffect, useRef } from 'react';
+import './PortfolioSection.css';
+
+const PortfolioSection = ({
+  title,
+  subtitle,
+  categories = [],
+  items = [],
+  delay = 0
+}) => {
+  const [titleText, setTitleText] = useState('');
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
+  const [showItems, setShowItems] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Intersection Observer for scroll-triggered animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  // Type the title when visible
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const startTimer = setTimeout(() => {
+      if (titleText.length < title.length) {
+        const timer = setTimeout(() => {
+          setTitleText(title.slice(0, titleText.length + 1));
+        }, 50);
+        return () => clearTimeout(timer);
+      } else {
+        const subtitleTimer = setTimeout(() => setShowSubtitle(true), 300);
+        const categoriesTimer = setTimeout(() => setShowCategories(true), 800);
+        const itemsTimer = setTimeout(() => setShowItems(true), 1200);
+
+        return () => {
+          clearTimeout(subtitleTimer);
+          clearTimeout(categoriesTimer);
+          clearTimeout(itemsTimer);
+        };
+      }
+    }, delay);
+
+    return () => clearTimeout(startTimer);
+  }, [isVisible, titleText, title, delay]);
+
+  return (
+    <div className="portfolio-section" ref={sectionRef}>
+      <div className="screenplay-content">
+        <h3 className="section-title">
+          {titleText}
+          {titleText.length < title.length && <span className="cursor typing"></span>}
+        </h3>
+
+        {showSubtitle && subtitle && (
+          <p className="section-subtitle">{subtitle}</p>
+        )}
+
+        {showCategories && categories.length > 0 && (
+          <div className="section-categories">
+            {categories.map((category, index) => (
+              <span key={index} className="category-tag">
+                {category}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {showItems && items.length > 0 && (
+          <div className="portfolio-grid">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="portfolio-item"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="item-thumbnail">
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} />
+                  ) : (
+                    <div className="placeholder-thumbnail">
+                      <span>{item.title}</span>
+                    </div>
+                  )}
+                </div>
+                <p className="item-title">{item.title}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default PortfolioSection;

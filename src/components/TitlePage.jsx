@@ -11,7 +11,7 @@ const TitlePage = ({ onComplete }) => {
 
   const fullTitle = 'Portfolio';
   const fullWrittenBy = 'written by';
-  const fullAuthor = 'Jonah Eisenman';
+  const fullAuthor = 'Jonah Einisman';
 
   useEffect(() => {
     if (currentPhase === 'title') {

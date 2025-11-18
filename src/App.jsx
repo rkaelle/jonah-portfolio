@@ -83,8 +83,10 @@ function App() {
               {/* Fade to Black */}
               <FadeToBlack onComplete={handleFadeComplete} />
 
-              {/* Contact Section */}
-              <ContactSection startDelay={currentStep >= 4 ? 0 : 2000} />
+              {/* Contact Section - Only show after fade completes */}
+              {currentStep >= 4 && (
+                <ContactSection startDelay={0} />
+              )}
             </>
           )}
         </>

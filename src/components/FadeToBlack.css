@@ -7,12 +7,29 @@
   padding: 4rem 2rem;
 }
 
-.scene-direction {
-  font-family: 'Courier', 'Courier New', monospace;
-  font-size: 1.1rem;
+.scroll-indicator {
   text-align: center;
-  margin: 0;
-  font-style: italic;
+  padding: 2rem 0;
+}
+
+.scroll-arrow {
+  font-size: 3rem;
+  display: inline-block;
+  animation: bounce 2s infinite;
+  color: #333;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .black-overlay {
@@ -24,13 +41,8 @@
   background: black;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 3s ease-in;
-  z-index: 1000;
-}
-
-.black-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  transition: opacity 0.1s linear;
+  z-index: 999;
 }
 
 @media (max-width: 768px) {

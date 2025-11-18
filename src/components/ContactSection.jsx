@@ -38,7 +38,7 @@ const ContactSection = ({ startDelay = 0 }) => {
         {text.length === fullText.length && (
           <div className="contact-details">
             <a
-              href="https://www.linkedin.com/in/jonah-eisenman"
+              href="http://www.linkedin.com/in/jonah-einisman"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-link"
@@ -46,16 +46,16 @@ const ContactSection = ({ startDelay = 0 }) => {
               LinkedIn →
             </a>
             <a
-              href="mailto:jonah.eisenman@gmail.com"
+              href="mailto:jonaheinisman@gmail.com"
               className="contact-link"
             >
-              jonah.eisenman@gmail.com
+              jonaheinisman@gmail.com
             </a>
             <a
-              href="tel:612-200-7624"
+              href="tel:612-200-7824"
               className="contact-link"
             >
-              612-200-7624
+              612-200-7824
             </a>
           </div>
         )}

@@ -38,13 +38,33 @@ export const useCharacterAnimation = (startDelay = 0) => {
 
     if (isComplete) return;
 
+    // Check if we've gone beyond the array bounds
+    if (titleIndex >= titles.length) {
+      setIsComplete(true);
+      return;
+    }
+
     const targetTitle = titles[titleIndex];
+
+    // Safety check - if targetTitle is undefined, complete the animation
+    if (targetTitle === undefined) {
+      setIsComplete(true);
+      return;
+    }
 
     // Handle empty string (deleted state)
     if (targetTitle === '') {
       // If we're at an empty string, just move to next immediately
       const timer = setTimeout(() => {
-        setTitleIndex((prev) => prev + 1);
+        setTitleIndex((prev) => {
+          const next = prev + 1;
+          // If we've reached the end, mark as complete
+          if (next >= titles.length) {
+            setIsComplete(true);
+            return prev;
+          }
+          return next;
+        });
         setIsTyping(true);
       }, 300);
       return () => clearTimeout(timer);
@@ -89,7 +109,15 @@ export const useCharacterAnimation = (startDelay = 0) => {
       } else {
         // Finished deleting, move to next title
         const timer = setTimeout(() => {
-          setTitleIndex((prev) => prev + 1);
+          setTitleIndex((prev) => {
+            const next = prev + 1;
+            // If we've reached the end, mark as complete
+            if (next >= titles.length) {
+              setIsComplete(true);
+              return prev;
+            }
+            return next;
+          });
           setIsTyping(true);
         }, 200);
         return () => clearTimeout(timer);

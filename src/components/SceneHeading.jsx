@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './SceneHeading.css';
 
 const SceneHeading = ({ onComplete }) => {
@@ -6,8 +6,8 @@ const SceneHeading = ({ onComplete }) => {
   const [showCursor, setShowCursor] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
 
-  // Get time of day or exact timestamp
-  const getTimeOfDay = () => {
+  // Get time of day or exact timestamp - calculate once on mount
+  const fullText = useMemo(() => {
     const now = new Date();
     const hour = now.getHours();
     const minute = now.getMinutes();
@@ -18,16 +18,14 @@ const SceneHeading = ({ onComplete }) => {
     const displaySecond = second.toString().padStart(2, '0');
     
     // Option 1: Use exact timestamp (more cinematic)
-    return `${displayHour}:${displayMinute}:${displaySecond} ${ampm}`;
+    return `INT. PORTFOLIO SITE – ${displayHour}:${displayMinute}:${displaySecond} ${ampm}`;
     
     // Option 2: Use time of day (uncomment to use instead)
-    // if (hour < 12) return 'MORNING';
-    // if (hour < 17) return 'DAY';
-    // if (hour < 21) return 'EVENING';
-    // return 'NIGHT';
-  };
-
-  const fullText = `INT. PORTFOLIO SITE – ${getTimeOfDay()}`;
+    // if (hour < 12) return 'INT. PORTFOLIO SITE – MORNING';
+    // if (hour < 17) return 'INT. PORTFOLIO SITE – DAY';
+    // if (hour < 21) return 'INT. PORTFOLIO SITE – EVENING';
+    // return 'INT. PORTFOLIO SITE – NIGHT';
+  }, []);
 
   useEffect(() => {
     if (text.length < fullText.length) {
@@ -35,7 +33,7 @@ const SceneHeading = ({ onComplete }) => {
         setText(fullText.slice(0, text.length + 1));
       }, 60);
       return () => clearTimeout(timer);
-    } else if (!isComplete) {
+    } else if (!isComplete && text.length === fullText.length) {
       // Cursor blinks twice
       const blink1 = setTimeout(() => setShowCursor(false), 500);
       const blink2 = setTimeout(() => setShowCursor(true), 1000);

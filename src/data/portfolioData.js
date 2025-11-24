@@ -13,6 +13,11 @@ export const portfolioData = {
         video: '/portfolio/videos-edits/starwar2.mov',
         thumbnail: null
       },
+      { 
+        title: 'New JJ', 
+        video: '/portfolio/videos-edits/new Jj.mov',
+        thumbnail: null
+      },
     ]
   },
   design: {

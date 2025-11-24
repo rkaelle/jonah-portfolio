@@ -97,7 +97,7 @@ const PortfolioSection = ({
             <div className="portfolio-grid">
               {items.map((item, index) => (
                 <div
-                  key={index}
+                  key={`${item.title}-${index}`}
                   className={`portfolio-item ${item.video ? 'video-item' : ''}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                   onClick={() => {
@@ -111,12 +111,16 @@ const PortfolioSection = ({
                   <div className="item-thumbnail">
                     {item.video ? (
                       <video 
+                        key={item.video}
                         src={item.video} 
-                        controls 
+                        controls
                         preload="metadata"
                         className="portfolio-video"
                         onClick={(e) => e.stopPropagation()}
+                        playsInline
+                        muted={false}
                       >
+                        <source src={item.video} type="video/quicktime" />
                         Your browser does not support the video tag.
                       </video>
                     ) : item.image ? (

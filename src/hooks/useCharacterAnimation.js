@@ -8,16 +8,14 @@ export const useCharacterAnimation = (startDelay = 0) => {
   const titles = [
     'Student',
     'Painter',
-    'Dancer',
     'Musician',
-    'Artist?',
+    'Artist',
     '', // Deleted
     'Screenwriter',
     'Animator',
     'Graphic Designer',
     'VFX Artist',
     'Video Editor',
-    'Rapper??',
     '', // Deleted with "maybe not that one"
     'Creative'
   ];
@@ -75,23 +73,20 @@ export const useCharacterAnimation = (startDelay = 0) => {
       if (currentTitle.length < targetTitle.length) {
         const timer = setTimeout(() => {
           setCurrentTitle(targetTitle.slice(0, currentTitle.length + 1));
-        }, 60);
+        }, 30); // Faster typing: 30ms instead of 60ms
         return () => clearTimeout(timer);
       } else {
         // Finished typing
-        setIsTyping(false);
-
-        // If this is the last title, we're done
+        // If this is the last title, we're done - don't delete it, don't set isTyping to false
         if (titleIndex === titles.length - 1) {
           const timer = setTimeout(() => {
             setIsComplete(true);
-          }, 800);
+          }, 400); // Shorter pause before completing
           return () => clearTimeout(timer);
         }
 
-        // Special pause for "Rapper??" to show hesitation, then delete
-        const pauseTime = targetTitle === 'Rapper??' ? 1500 : 
-                          targetTitle === 'Artist?' ? 1000 : 600;
+        // For non-last titles: shorter pause before deleting
+        const pauseTime = targetTitle === 'Artist?' ? 500 : 300;
 
         // Pause, then start deleting
         const timer = setTimeout(() => {
@@ -104,7 +99,7 @@ export const useCharacterAnimation = (startDelay = 0) => {
       if (currentTitle.length > 0) {
         const timer = setTimeout(() => {
           setCurrentTitle((prev) => prev.slice(0, -1));
-        }, 40);
+        }, 20); // Faster deleting: 20ms instead of 40ms
         return () => clearTimeout(timer);
       } else {
         // Finished deleting, move to next title
@@ -119,7 +114,7 @@ export const useCharacterAnimation = (startDelay = 0) => {
             return next;
           });
           setIsTyping(true);
-        }, 200);
+        }, 100); // Faster transition: 100ms instead of 200ms
         return () => clearTimeout(timer);
       }
     }

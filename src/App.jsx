@@ -82,13 +82,11 @@ function App() {
 
               {/* Fade to Black */}
               <FadeToBlack onComplete={handleFadeComplete} />
-
-              {/* Contact Section - Only show after fade completes */}
-              {currentStep >= 4 && (
-                <ContactSection startDelay={0} />
-              )}
             </>
           )}
+
+          {/* Contact Section - Always render for scroll height */}
+          <ContactSection startDelay={currentStep >= 4 ? 0 : 999999} />
         </>
       )}
     </div>

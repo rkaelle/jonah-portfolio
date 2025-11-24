@@ -46,8 +46,9 @@ const FadeToBlack = ({ onComplete }) => {
       // Start fading when section is in viewport
       // Progress from 0 to 1 as user scrolls past the section
       const sectionTop = rect.top;
-      const fadeStart = windowHeight * 0.3; // Start fading when section is 30% from top
-      const fadeEnd = -windowHeight * 0.2; // Complete fade when section is 20% above viewport
+      const sectionBottom = rect.bottom;
+      const fadeStart = windowHeight * 0.5; // Start fading when section is 50% from top
+      const fadeEnd = -windowHeight * 0.3; // Complete fade when section is 30% above viewport
       
       let progress = 0;
       if (sectionTop < fadeStart) {
@@ -61,8 +62,17 @@ const FadeToBlack = ({ onComplete }) => {
         setShowArrow(false);
       }
 
-      // Complete when fade is done
-      if (progress >= 1 && !onCompleteCalledRef.current) {
+      // Complete when fade is done - trigger earlier to ensure contact section appears
+      // Trigger when section bottom is near viewport top or progress is high
+      if ((progress >= 0.8 || sectionBottom < windowHeight * 0.2) && !onCompleteCalledRef.current) {
+        onCompleteCalledRef.current = true;
+        if (onComplete) {
+          onComplete();
+        }
+      }
+      
+      // Fallback: if user scrolls way past, force completion
+      if (sectionBottom < -windowHeight && !onCompleteCalledRef.current) {
         onCompleteCalledRef.current = true;
         if (onComplete) {
           onComplete();
@@ -82,6 +92,9 @@ const FadeToBlack = ({ onComplete }) => {
     <>
       <div className="fade-to-black-section" ref={sectionRef}>
         <div className="screenplay-content">
+          <div className="fade-to-black-text">
+            <strong>FADE TO BLACK</strong>
+          </div>
           {showArrow && (
             <div className="scroll-indicator">
               <span className="scroll-arrow">↓</span>

@@ -3,12 +3,16 @@ export const portfolioData = {
     title: 'VIDEOS',
     categories: ['Animation', 'Visual Effects', 'Edits'],
     items: [
-      { title: 'Short Film Animation', image: null },
-      { title: 'VFX Breakdown Reel', image: null },
-      { title: 'Music Video Edit', image: null },
-      { title: 'Motion Graphics Demo', image: null },
-      { title: '3D Animation Project', image: null },
-      { title: 'Commercial Edit', image: null },
+      { 
+        title: 'Snow Day', 
+        video: '/portfolio/videos-edits/Snow Day - Jonah Einisman Final.mov',
+        thumbnail: null
+      },
+      { 
+        title: 'Star Wars Edit', 
+        video: '/portfolio/videos-edits/starwar2.mov',
+        thumbnail: null
+      },
     ]
   },
   design: {
@@ -16,24 +20,28 @@ export const portfolioData = {
     subtitle: 'made in Adobe Photoshop – personal and commission work',
     categories: ['Logo', 'Poster', 'Hoodie', 'Graphic'],
     items: [
-      { title: 'Brand Logo Design', image: null },
-      { title: 'Event Poster', image: null },
-      { title: 'Merchandise Design', image: null },
-      { title: 'Album Cover Art', image: null },
-      { title: 'Social Media Graphics', image: null },
-      { title: 'Apparel Design', image: null },
+      { title: 'Birthday Bash', image: '/portfolio/GraphicDesign/bdaybash.jpg' },
+      { title: 'Expand Winter Open House', image: '/portfolio/GraphicDesign/expandwinteropenhouse.jpeg' },
+      { title: 'Final Graphic Rush', image: '/portfolio/GraphicDesign/finalgraphicrush.jpg' },
+      { title: "Mom's Weekend 2024", image: '/portfolio/GraphicDesign/moms weekend 24.png' },
+      { title: 'Profile Picture', image: '/portfolio/GraphicDesign/Pfpnobackground2.png' },
+      { title: 'Sedley Design', image: '/portfolio/GraphicDesign/SedleyUv4.jpg' },
     ]
   },
   artwork: {
     title: 'ARTWORK',
     categories: ['Paintings', 'Drawings', 'Digital Art'],
     items: [
-      { title: 'Oil Painting Series', image: null },
-      { title: 'Character Sketches', image: null },
-      { title: 'Digital Illustration', image: null },
-      { title: 'Watercolor Landscape', image: null },
-      { title: 'Concept Art', image: null },
-      { title: 'Portrait Study', image: null },
+      { title: 'Artist Drawing', image: '/portfolio/drawings/artistdrawing.PNG' },
+      { title: 'Closeup Drawing 2', image: '/portfolio/drawings/closeupdrawing2.JPG' },
+      { title: 'Closeup Drawing 3', image: '/portfolio/drawings/closeupdrawing3.JPG' },
+      { title: 'East High School', image: '/portfolio/drawings/easthighschool.PNG' },
+      { title: 'Football Drawing 1', image: '/portfolio/drawings/footballdrawing1.JPG' },
+      { title: 'Football Drawing 2', image: '/portfolio/drawings/footballdrawing2.JPG' },
+      { title: 'Football Drawing 3', image: '/portfolio/drawings/footballdrawing3.JPG' },
+      { title: 'Football Drawing 4', image: '/portfolio/drawings/footballdrawing4.JPG' },
+      { title: 'Drawing Study', image: '/portfolio/drawings/IMG_1951.JPG' },
+      { title: 'Kendrick Drawing', image: '/portfolio/drawings/kendrickdrawing.PNG' },
     ]
   },
   writing: {

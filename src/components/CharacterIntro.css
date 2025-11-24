@@ -1,9 +1,9 @@
 .character-intro {
-  min-height: 20vh;
+  min-height: auto;
   display: flex;
   align-items: flex-start;
-  padding: 2rem 2rem 4rem 2rem;
-  margin-top: -2rem;
+  padding: 0 2rem 4rem 2rem; /* Reduced top padding to be closer to scene heading */
+  margin-top: 0;
 }
 
 .character-description {
@@ -20,16 +20,10 @@
 
 .character-title {
   font-style: italic;
-  display: inline-block;
-  min-width: 150px;
 }
 
 @media (max-width: 768px) {
   .character-description {
     font-size: 1rem;
-  }
-
-  .character-title {
-    min-width: 120px;
   }
 }

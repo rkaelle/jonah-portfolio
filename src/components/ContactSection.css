@@ -8,6 +8,7 @@
   padding: 4rem 2rem;
   position: relative;
   z-index: 1000;
+  margin-top: 0;
 }
 
 .contact-content {
@@ -44,34 +45,45 @@
   animation: fadeIn 1s ease-in;
 }
 
-.contact-link {
+.contact-button {
   font-family: 'Courier', 'Courier New', monospace;
   font-size: 1.2rem;
   color: white;
   text-decoration: none;
-  padding: 1rem 1.5rem;
-  border: 1px solid white;
+  padding: 1rem 2rem;
+  border: 2px solid white;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
   background: transparent;
   cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }
 
-.contact-link:hover {
+.contact-button:hover {
   background: white;
   color: black;
 }
 
-.contact-link:hover::after {
-  content: '';
-  display: inline-block;
-  width: 2px;
-  height: 1.2em;
-  background-color: black;
-  margin-left: 5px;
-  animation: blink 1s infinite;
-  vertical-align: text-bottom;
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-email,
+.contact-phone {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.contact-email:hover,
+.contact-phone:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {

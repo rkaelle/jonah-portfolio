@@ -4,6 +4,7 @@
   min-height: 100vh;
   font-family: 'Courier', 'Courier New', monospace;
   font-size: 12pt;
+  overflow-y: auto;
 }
 
 /* Smooth transitions between sections */

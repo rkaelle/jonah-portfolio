@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react';
 import './ContactSection.css';
 
 const ContactSection = ({ startDelay = 0 }) => {
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = useState(startDelay === 0);
   const [text, setText] = useState('');
   const fullText = 'CONTACT ME';
 
   useEffect(() => {
+    if (startDelay === 0) {
+      setShowContent(true);
+      return;
+    }
+    
     const delayTimer = setTimeout(() => {
       setShowContent(true);
     }, startDelay);
@@ -41,22 +46,24 @@ const ContactSection = ({ startDelay = 0 }) => {
               href="http://www.linkedin.com/in/jonah-einisman"
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-link"
+              className="contact-link contact-button"
             >
-              LinkedIn →
+              LinkedIn
             </a>
-            <a
-              href="mailto:jonaheinisman@gmail.com"
-              className="contact-link"
-            >
-              jonaheinisman@gmail.com
-            </a>
-            <a
-              href="tel:612-200-7824"
-              className="contact-link"
-            >
-              612-200-7824
-            </a>
+            <div className="contact-info">
+              <a
+                href="mailto:jonaheinisman@gmail.com"
+                className="contact-email"
+              >
+                jonaheinisman@gmail.com
+              </a>
+              <a
+                href="tel:612-200-7824"
+                className="contact-phone"
+              >
+                612-200-7824
+              </a>
+            </div>
           </div>
         )}
       </div>

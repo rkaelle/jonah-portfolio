@@ -98,7 +98,16 @@ const PortfolioSection = ({
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="item-thumbnail">
-                  {item.image ? (
+                  {item.video ? (
+                    <video 
+                      src={item.video} 
+                      controls 
+                      preload="metadata"
+                      className="portfolio-video"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : item.image ? (
                     <img src={item.image} alt={item.title} />
                   ) : (
                     <div className="placeholder-thumbnail">

@@ -5,17 +5,17 @@ export const portfolioData = {
     items: [
       { 
         title: 'Snow Day', 
-        video: '/portfolio/videos-edits/Snow Day - Jonah Einisman Final.mov',
+        video: '/portfolio/videos-edits/Snow Day - Jonah Einisman Final.mp4',
         thumbnail: null
       },
       { 
         title: 'Star Wars Edit', 
-        video: '/portfolio/videos-edits/New StarWars.mov',
+        video: '/portfolio/videos-edits/New StarWars.mp4',
         thumbnail: null
       },
       { 
         title: 'New JJ', 
-        video: '/portfolio/videos-edits/new Jj.mov',
+        video: '/portfolio/videos-edits/new Jj.mp4',
         thumbnail: null
       },
     ]

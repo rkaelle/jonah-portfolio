@@ -85,8 +85,10 @@ function App() {
             </>
           )}
 
-          {/* Contact Section - Always render for scroll height */}
-          <ContactSection startDelay={currentStep >= 4 ? 0 : 999999} />
+          {/* Contact Section - Only show after fade completes */}
+          {currentStep >= 4 && (
+            <ContactSection startDelay={0} />
+          )}
         </>
       )}
     </div>

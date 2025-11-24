@@ -102,10 +102,13 @@ const FadeToBlack = ({ onComplete }) => {
           )}
         </div>
       </div>
-      <div 
-        className="black-overlay" 
-        style={{ opacity: fadeProgress }}
-      ></div>
+      {/* Only show overlay when fade is actually happening */}
+      {fadeProgress > 0 && (
+        <div 
+          className="black-overlay" 
+          style={{ opacity: fadeProgress }}
+        ></div>
+      )}
     </>
   );
 };

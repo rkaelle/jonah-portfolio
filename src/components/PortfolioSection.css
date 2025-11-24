@@ -93,6 +93,30 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Show hover text on clickable items (not videos) */
+.portfolio-item:not(.video-item):hover .item-thumbnail::after {
+  content: 'Click to expand';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.portfolio-item.video-item {
+  cursor: default;
+}
+
+.portfolio-item.video-item:hover {
+  transform: none;
+}
+
 .item-thumbnail {
   width: 100%;
   aspect-ratio: 16 / 9;

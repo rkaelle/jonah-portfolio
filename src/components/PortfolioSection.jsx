@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import PortfolioModal from './PortfolioModal';
 import './PortfolioSection.css';
 
 const PortfolioSection = ({
@@ -13,6 +14,8 @@ const PortfolioSection = ({
   const [showCategories, setShowCategories] = useState(false);
   const [showItems, setShowItems] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef(null);
 
   // Intersection Observer for scroll-triggered animation
@@ -90,35 +93,53 @@ const PortfolioSection = ({
         )}
 
         {showItems && items.length > 0 && (
-          <div className="portfolio-grid">
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className="portfolio-item"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="item-thumbnail">
-                  {item.video ? (
-                    <video 
-                      src={item.video} 
-                      controls 
-                      preload="metadata"
-                      className="portfolio-video"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : item.image ? (
-                    <img src={item.image} alt={item.title} />
-                  ) : (
-                    <div className="placeholder-thumbnail">
-                      <span>{item.title}</span>
-                    </div>
-                  )}
+          <>
+            <div className="portfolio-grid">
+              {items.map((item, index) => (
+                <div
+                  key={index}
+                  className={`portfolio-item ${item.video ? 'video-item' : ''}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => {
+                    // Only open modal for images or placeholder items (not videos)
+                    if (!item.video) {
+                      setSelectedItem(item);
+                      setIsModalOpen(true);
+                    }
+                  }}
+                >
+                  <div className="item-thumbnail">
+                    {item.video ? (
+                      <video 
+                        src={item.video} 
+                        controls 
+                        preload="metadata"
+                        className="portfolio-video"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : item.image ? (
+                      <img src={item.image} alt={item.title} />
+                    ) : (
+                      <div className="placeholder-thumbnail">
+                        <span>{item.title}</span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="item-title">{item.title}</p>
                 </div>
-                <p className="item-title">{item.title}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+            <PortfolioModal
+              item={selectedItem}
+              isOpen={isModalOpen}
+              onClose={() => {
+                setIsModalOpen(false);
+                setSelectedItem(null);
+              }}
+            />
+          </>
         )}
       </div>
     </div>

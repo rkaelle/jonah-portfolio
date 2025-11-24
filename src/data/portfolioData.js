@@ -10,7 +10,7 @@ export const portfolioData = {
       },
       { 
         title: 'Star Wars Edit', 
-        video: '/portfolio/videos-edits/starwar2.mov',
+        video: '/portfolio/videos-edits/New StarWars.mov',
         thumbnail: null
       },
       { 

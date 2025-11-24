@@ -112,15 +112,16 @@ const PortfolioSection = ({
                     {item.video ? (
                       <video 
                         key={item.video}
-                        src={item.video} 
                         controls
                         preload="metadata"
                         className="portfolio-video"
                         onClick={(e) => e.stopPropagation()}
                         playsInline
-                        muted={false}
+                        controlsList="nodownload"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       >
                         <source src={item.video} type="video/quicktime" />
+                        <source src={item.video} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                     ) : item.image ? (

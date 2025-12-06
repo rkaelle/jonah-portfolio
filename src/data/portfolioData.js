@@ -21,7 +21,7 @@ export const portfolioData = {
     categories: ['Logo', 'Poster', 'Hoodie', 'Graphic'],
     items: [
       { title: 'Birthday Bash', image: '/portfolio/GraphicDesign/bdaybash.jpg' },
-      { title: 'Final Graphic Rush', image: '/portfolio/GraphicDesign/finalgraphicrush.jpg' },
+      { title: 'Rush Graphic', image: '/portfolio/GraphicDesign/finalgraphicrush.jpg' },
       { title: "Mom's Weekend 2024", image: '/portfolio/GraphicDesign/moms weekend 24.png' },
     ]
   },

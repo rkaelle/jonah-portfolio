@@ -7,14 +7,12 @@ import { useState, useEffect } from 'react';
 export const useCharacterAnimation = (startDelay = 0) => {
   const titles = [
     'Student',
-    'Painter',
-    'Musician',
     'Artist',
     '', // Deleted
     'Screenwriter',
     'Animator',
+    'Musician',
     'Graphic Designer',
-    'VFX Artist',
     'Video Editor',
     '', // Deleted with "maybe not that one"
     'Creative'

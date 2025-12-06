@@ -4,14 +4,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.98);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 99999;
   padding: 2rem;
   animation: fadeIn 0.3s ease-in;
   overflow: hidden;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .portfolio-modal-content {
@@ -55,6 +59,52 @@
   border-color: black;
 }
 
+.portfolio-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid white;
+  width: 50px;
+  height: 50px;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  font-family: 'Courier', 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10002;
+  transition: all 0.3s ease;
+  padding: 0;
+  border-radius: 0;
+}
+
+.portfolio-modal-nav:hover {
+  background: white;
+  color: black;
+  border-color: black;
+}
+
+.portfolio-modal-nav-prev {
+  left: 1rem;
+}
+
+.portfolio-modal-nav-next {
+  right: 1rem;
+}
+
+.portfolio-modal-counter {
+  font-family: 'Courier', 'Courier New', monospace;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.5rem 1rem 1rem 1rem;
+  color: #666;
+  background: white;
+  margin: 0;
+}
+
 .portfolio-modal-image-container {
   display: flex;
   flex-direction: column;
@@ -62,6 +112,11 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+}
+
+.portfolio-modal-footer {
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .portfolio-modal-image {
@@ -162,6 +217,20 @@
     min-width: auto;
     min-height: auto;
     padding: 3rem 1.5rem;
+  }
+
+  .portfolio-modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+  }
+
+  .portfolio-modal-nav-prev {
+    left: 0.5rem;
+  }
+
+  .portfolio-modal-nav-next {
+    right: 0.5rem;
   }
 }
 

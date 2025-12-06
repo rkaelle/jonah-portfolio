@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import PortfolioModal from './PortfolioModal';
+import ImageCarousel from './ImageCarousel';
 import './PortfolioSection.css';
 
 const PortfolioSection = ({
@@ -7,6 +8,7 @@ const PortfolioSection = ({
   subtitle,
   categories = [],
   items = [],
+  carousels = [],
   delay = 0
 }) => {
   const [titleText, setTitleText] = useState('');
@@ -15,6 +17,8 @@ const PortfolioSection = ({
   const [showItems, setShowItems] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedCarousel, setSelectedCarousel] = useState(null);
+  const [selectedCarouselIndex, setSelectedCarouselIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef(null);
 
@@ -92,54 +96,81 @@ const PortfolioSection = ({
           </div>
         )}
 
-        {showItems && items.length > 0 && (
+        {showItems && (items.length > 0 || carousels.length > 0) && (
           <>
-            <div className="portfolio-grid">
-              {items.map((item, index) => (
-                <div
-                  key={`${item.title}-${index}`}
-                  className={`portfolio-item ${item.video ? 'video-item' : ''}`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                  onClick={() => {
-                    // Only open modal for images or placeholder items (not videos)
-                    if (!item.video) {
-                      setSelectedItem(item);
-                      setIsModalOpen(true);
-                    }
-                  }}
-                >
-                  <div className="item-thumbnail">
-                    {item.video ? (
-                      <video 
-                        key={item.video}
-                        controls
-                        preload="metadata"
-                        className="portfolio-video"
-                        onClick={(e) => e.stopPropagation()}
-                        playsInline
-                        controlsList="nodownload"
-                      >
-                        <source src={item.video} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : item.image ? (
-                      <img src={item.image} alt={item.title} />
-                    ) : (
-                      <div className="placeholder-thumbnail">
-                        <span>{item.title}</span>
-                      </div>
-                    )}
+            {/* Regular items grid */}
+            {items.length > 0 && (
+              <div className="portfolio-grid">
+                {items.map((item, index) => (
+                  <div
+                    key={`${item.title}-${index}`}
+                    className={`portfolio-item ${item.video ? 'video-item' : ''}`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => {
+                      // Only open modal for images or placeholder items (not videos)
+                      if (!item.video) {
+                        setSelectedItem(item);
+                        setIsModalOpen(true);
+                      }
+                    }}
+                  >
+                    <div className="item-thumbnail">
+                      {item.video ? (
+                        <video 
+                          key={item.video}
+                          controls
+                          preload="metadata"
+                          className="portfolio-video"
+                          onClick={(e) => e.stopPropagation()}
+                          playsInline
+                          controlsList="nodownload"
+                        >
+                          <source src={item.video} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : item.image ? (
+                        <img src={item.image} alt={item.title} />
+                      ) : (
+                        <div className="placeholder-thumbnail">
+                          <span>{item.title}</span>
+                        </div>
+                      )}
+                    </div>
+                    <p className="item-title">{item.title}</p>
                   </div>
-                  <p className="item-title">{item.title}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
+            
+            {/* Carousels */}
+            {carousels.length > 0 && (
+              <div className="portfolio-carousels">
+                {carousels.map((carousel, carouselIndex) => (
+                  <ImageCarousel
+                    key={`carousel-${carouselIndex}`}
+                    title={carousel.title}
+                    images={carousel.images}
+                    onImageClick={(image, imageIndex) => {
+                      setSelectedItem(image);
+                      setSelectedCarousel(carousel.images);
+                      setSelectedCarouselIndex(imageIndex);
+                      setIsModalOpen(true);
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+            
             <PortfolioModal
               item={selectedItem}
+              carouselImages={selectedCarousel}
+              currentIndex={selectedCarouselIndex}
               isOpen={isModalOpen}
               onClose={() => {
                 setIsModalOpen(false);
                 setSelectedItem(null);
+                setSelectedCarousel(null);
+                setSelectedCarouselIndex(0);
               }}
             />
           </>

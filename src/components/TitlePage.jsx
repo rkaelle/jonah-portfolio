@@ -91,15 +91,15 @@ const TitlePage = ({ onComplete }) => {
             )}
           </p>
         )}
-        {currentPhase === 'author' && (
+        {(currentPhase === 'author' || currentPhase === 'complete') && (
           <h2 className="author">
             {authorText}
-            {authorText.length < fullAuthor.length && (
+            {currentPhase === 'author' && authorText.length < fullAuthor.length && (
               <span className="cursor typing"></span>
             )}
+            {currentPhase === 'complete' && showCursor && <span className="cursor"></span>}
           </h2>
         )}
-        {currentPhase === 'complete' && showCursor && <span className="cursor"></span>}
       </div>
     </div>
   );

@@ -56,9 +56,16 @@ function App() {
           {currentStep >= 3 && (
             <>
               <PortfolioSection
+                title={portfolioData.videos.title}
+                categories={portfolioData.videos.categories}
+                items={portfolioData.videos.items}
+              />
+
+              <PortfolioSection
                 title={portfolioData.artwork.title}
                 categories={portfolioData.artwork.categories}
                 items={portfolioData.artwork.items}
+                carousels={portfolioData.artwork.carousels}
               />
 
               <PortfolioSection
@@ -66,12 +73,6 @@ function App() {
                 subtitle={portfolioData.design.subtitle}
                 categories={portfolioData.design.categories}
                 items={portfolioData.design.items}
-              />
-
-              <PortfolioSection
-                title={portfolioData.videos.title}
-                categories={portfolioData.videos.categories}
-                items={portfolioData.videos.items}
               />
 
               <PortfolioSection

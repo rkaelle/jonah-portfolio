@@ -13,11 +13,6 @@ export const portfolioData = {
         video: '/portfolio/videos-edits/New StarWars.mp4',
         thumbnail: null
       },
-      { 
-        title: 'New JJ', 
-        video: '/portfolio/videos-edits/new Jj.mp4',
-        thumbnail: null
-      },
     ]
   },
   design: {
@@ -26,39 +21,41 @@ export const portfolioData = {
     categories: ['Logo', 'Poster', 'Hoodie', 'Graphic'],
     items: [
       { title: 'Birthday Bash', image: '/portfolio/GraphicDesign/bdaybash.jpg' },
-      { title: 'Expand Winter Open House', image: '/portfolio/GraphicDesign/expandwinteropenhouse.jpeg' },
       { title: 'Final Graphic Rush', image: '/portfolio/GraphicDesign/finalgraphicrush.jpg' },
       { title: "Mom's Weekend 2024", image: '/portfolio/GraphicDesign/moms weekend 24.png' },
-      { title: 'Profile Picture', image: '/portfolio/GraphicDesign/Pfpnobackground2.png' },
-      { title: 'Sedley Design', image: '/portfolio/GraphicDesign/SedleyUv4.jpg' },
     ]
   },
   artwork: {
     title: 'ARTWORK',
-    categories: ['Paintings', 'Drawings', 'Digital Art'],
+    categories: ['Paintings', 'Drawings', 'Digital Art', 'Prints'],
     items: [
-      { title: 'Artist Drawing', image: '/portfolio/drawings/artistdrawing.PNG' },
-      { title: 'Closeup Drawing 2', image: '/portfolio/drawings/closeupdrawing2.JPG' },
-      { title: 'Closeup Drawing 3', image: '/portfolio/drawings/closeupdrawing3.JPG' },
+      { title: 'J Cole Drawing', image: '/portfolio/drawings/artistdrawing.PNG' },
       { title: 'East High School', image: '/portfolio/drawings/easthighschool.PNG' },
-      { title: 'Football Drawing 1', image: '/portfolio/drawings/footballdrawing1.JPG' },
-      { title: 'Football Drawing 2', image: '/portfolio/drawings/footballdrawing2.JPG' },
-      { title: 'Football Drawing 3', image: '/portfolio/drawings/footballdrawing3.JPG' },
-      { title: 'Football Drawing 4', image: '/portfolio/drawings/footballdrawing4.JPG' },
-      { title: 'Drawing Study', image: '/portfolio/drawings/IMG_1951.JPG' },
-      { title: 'Kendrick Drawing', image: '/portfolio/drawings/kendrickdrawing.PNG' },
+      { title: 'Kendrick Lamar Drawing', image: '/portfolio/drawings/kendrickdrawing.PNG' },
+    ],
+    carousels: [
+      {
+        title: 'Justin Jefferson Wallpapers',
+        images: [
+          { title: 'Justin Jefferson Wallpaper', image: '/portfolio/drawings/IMG_1951.JPG' },
+          { title: 'Justin Jefferson Wallpaper', image: '/portfolio/drawings/closeupdrawing3.JPG' },
+          { title: 'Justin Jefferson Wallpaper', image: '/portfolio/drawings/closeupdrawing2.JPG' },
+        ]
+      },
+      {
+        title: 'Dalvin Cook Digital Drawings',
+        images: [
+          { title: 'Dalvin Cook Digital Drawing', image: '/portfolio/drawings/footballdrawing1.JPG' },
+          { title: 'Dalvin Cook Digital Drawing', image: '/portfolio/drawings/footballdrawing2.JPG' },
+        ]
+      },
     ]
   },
   writing: {
     title: 'WRITING',
     subtitle: 'creative, captivating, original screenwriting — best scripts + samples below',
     items: [
-      { title: 'Feature Screenplay', image: null },
-      { title: 'TV Pilot Script', image: null },
-      { title: 'Short Film Script', image: null },
-      { title: 'Spec Script Sample', image: null },
-      { title: 'Scene Writing Sample', image: null },
-      { title: 'Original Series Bible', image: null },
+      { title: 'Feature Screenplay — In Progress...', image: null },
     ]
   }
 };

@@ -3,6 +3,7 @@ import TitlePage from './components/TitlePage';
 import SceneHeading from './components/SceneHeading';
 import CharacterIntro from './components/CharacterIntro';
 import PortfolioSection from './components/PortfolioSection';
+import ScrollIndicator from './components/ScrollIndicator';
 import FadeToBlack from './components/FadeToBlack';
 import ContactSection from './components/ContactSection';
 import { portfolioData } from './data/portfolioData';
@@ -60,6 +61,8 @@ function App() {
                 categories={portfolioData.videos.categories}
                 items={portfolioData.videos.items}
               />
+
+              <ScrollIndicator />
 
               <PortfolioSection
                 title={portfolioData.artwork.title}

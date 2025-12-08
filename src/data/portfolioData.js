@@ -18,7 +18,7 @@ export const portfolioData = {
   design: {
     title: 'DESIGN',
     subtitle: 'made in Adobe Photoshop – personal and commission work',
-    categories: ['Logo', 'Poster', 'Hoodie', 'Graphic'],
+    categories: ['Logo', 'Poster', 'Graphic'],
     items: [
       { title: 'Birthday Bash', image: '/portfolio/GraphicDesign/bdaybash.jpg' },
       { title: 'Rush Graphic', image: '/portfolio/GraphicDesign/finalgraphicrush.jpg' },

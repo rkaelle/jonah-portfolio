@@ -32,6 +32,7 @@ export const portfolioData = {
       { title: 'J Cole Drawing', image: '/portfolio/drawings/artistdrawing.PNG' },
       { title: 'East High School', image: '/portfolio/drawings/easthighschool.PNG' },
       { title: 'Kendrick Lamar Drawing', image: '/portfolio/drawings/kendrickdrawing.PNG' },
+      { title: 'Lita and Tata', image: '/portfolio/drawings/image.png' },
     ],
     carousels: [
       {

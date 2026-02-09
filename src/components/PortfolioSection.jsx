@@ -104,14 +104,16 @@ const PortfolioSection = ({
                 {items.map((item, index) => (
                   <div
                     key={`${item.title}-${index}`}
-                    className={`portfolio-item ${item.video ? 'video-item' : ''}`}
+                    className={`portfolio-item ${item.video ? 'video-item' : ''} ${item.pdf ? 'pdf-item' : ''}`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                     onClick={() => {
-                      // Only open modal for images or placeholder items (not videos)
-                      if (!item.video) {
-                        setSelectedItem(item);
-                        setIsModalOpen(true);
+                      if (item.video) return;
+                      if (item.pdf) {
+                        window.open(item.pdf, '_blank', 'noopener,noreferrer');
+                        return;
                       }
+                      setSelectedItem(item);
+                      setIsModalOpen(true);
                     }}
                   >
                     <div className="item-thumbnail">
@@ -130,6 +132,10 @@ const PortfolioSection = ({
                         </video>
                       ) : item.image ? (
                         <img src={item.image} alt={item.title} />
+                      ) : item.pdf ? (
+                        <div className="placeholder-thumbnail pdf-thumbnail">
+                          <span>{item.title}</span>
+                        </div>
                       ) : (
                         <div className="placeholder-thumbnail">
                           <span>{item.title}</span>

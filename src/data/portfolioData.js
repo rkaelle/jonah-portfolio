@@ -54,8 +54,9 @@ export const portfolioData = {
   },
   writing: {
     title: 'WRITING',
-    subtitle: 'creative, captivating, original screenwriting — best scripts + samples below',
+    subtitle: null,
     items: [
+      { title: 'Sample: Feature Length Sci-Fi Script', pdf: '/portfolio/writings/The Mirror Sample.pdf' },
       { title: 'Feature Screenplay — In Progress...', image: null },
     ]
   }

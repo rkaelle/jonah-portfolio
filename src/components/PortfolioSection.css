@@ -124,6 +124,10 @@
   transform: none;
 }
 
+.portfolio-item.pdf-item:hover .item-thumbnail::after {
+  content: 'Click to open';
+}
+
 .item-thumbnail {
   width: 100%;
   aspect-ratio: 16 / 9;

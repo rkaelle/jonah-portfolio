@@ -18,56 +18,52 @@ const TitlePage = ({ onComplete }) => {
       if (titleText.length < fullTitle.length) {
         const timer = setTimeout(() => {
           setTitleText(fullTitle.slice(0, titleText.length + 1));
-        }, 100);
+        }, 60);
         return () => clearTimeout(timer);
       } else {
         const timer = setTimeout(() => {
           setCurrentPhase('writtenBy');
-        }, 800);
+        }, 400);
         return () => clearTimeout(timer);
       }
     } else if (currentPhase === 'writtenBy') {
       if (writtenByText.length < fullWrittenBy.length) {
         const timer = setTimeout(() => {
           setWrittenByText(fullWrittenBy.slice(0, writtenByText.length + 1));
-        }, 80);
+        }, 50);
         return () => clearTimeout(timer);
       } else {
         const timer = setTimeout(() => {
           setCurrentPhase('author');
-        }, 800);
+        }, 400);
         return () => clearTimeout(timer);
       }
     } else if (currentPhase === 'author') {
       if (authorText.length < fullAuthor.length) {
         const timer = setTimeout(() => {
           setAuthorText(fullAuthor.slice(0, authorText.length + 1));
-        }, 100);
+        }, 60);
         return () => clearTimeout(timer);
       } else {
         const timer = setTimeout(() => {
           setCurrentPhase('complete');
-        }, 800);
+        }, 400);
         return () => clearTimeout(timer);
       }
     } else if (currentPhase === 'complete') {
-      // Cursor blinks twice
-      const cursorBlink1 = setTimeout(() => setShowCursor(false), 500);
-      const cursorBlink2 = setTimeout(() => setShowCursor(true), 1000);
-      const cursorBlink3 = setTimeout(() => setShowCursor(false), 1500);
-      const cursorBlink4 = setTimeout(() => setShowCursor(true), 2000);
+      // Brief cursor blink, then fade out quickly
+      const cursorBlink1 = setTimeout(() => setShowCursor(false), 300);
+      const cursorBlink2 = setTimeout(() => setShowCursor(true), 600);
 
-      // Start fade out and trigger completion
-      const fadeTimer = setTimeout(() => setFadeOut(true), 2500);
+      // Start fade out and trigger completion sooner
+      const fadeTimer = setTimeout(() => setFadeOut(true), 900);
       const completeTimer = setTimeout(() => {
         if (onComplete) onComplete();
-      }, 3500);
+      }, 1400);
 
       return () => {
         clearTimeout(cursorBlink1);
         clearTimeout(cursorBlink2);
-        clearTimeout(cursorBlink3);
-        clearTimeout(cursorBlink4);
         clearTimeout(fadeTimer);
         clearTimeout(completeTimer);
       };

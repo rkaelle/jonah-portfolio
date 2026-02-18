@@ -57,7 +57,6 @@ export const portfolioData = {
     subtitle: null,
     items: [
       { title: 'Sample: Feature Length Sci-Fi Script', pdf: '/portfolio/writings/The Mirror Sample.pdf' },
-      { title: 'Feature Screenplay — In Progress...', image: null },
     ]
   }
 };
